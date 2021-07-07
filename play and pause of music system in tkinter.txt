@@ -1,0 +1,29 @@
+#Play system with pause and unpause
+from tkinter import*
+from pygame import mixer
+import time
+root=Tk()
+root.geometry("300x400")
+b=[]
+index=[0,1,2]
+a=StringVar()
+mixer.init()
+def play():
+    mixer.music.load("Badshah_Wakhra_Swag.mp3")
+    mixer.music.play()
+    time.sleep(0.1)
+def pause():
+    mixer.music.pause()
+def unpause():
+    mixer.music.unpause()
+
+for index in range(0,3):
+    b1=Button(root,text=index)
+    b.append(b1)
+for row in range(0,1):
+    for col in range(0,3):
+        i=row*4+col
+        b[i].grid(row=row+3,column=col)
+b[0].configure(command=lambda:play())
+b[1].configure(command=lambda:pause())
+b[2].configure(command=lambda:unpause())
