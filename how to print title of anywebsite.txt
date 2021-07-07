@@ -1,0 +1,7 @@
+# how to print the title of any website with of selenium webdriver 
+from selenium import webdriver
+driver = webdriver.Chrome("chromedriver.exe")
+driver.get("https://www.selenium.dev/documentation/en/webdriver/")
+titile=driver.find_element_by_xpath('//h1[@id="webdriver"]').text
+print(titile)
+driver.close()
