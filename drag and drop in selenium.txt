@@ -1,0 +1,19 @@
+# move to element and drag and drop and right click user action in selenium
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver import ActionChains
+import time
+
+driver=webdriver.Chrome(ChromeDriverManager().install())
+driver.implicitly_wait(10)
+driver.get("https://jqueryui.com/resources/demos/droppable/default.html")
+
+# dragon drop
+sources=driver.find_element(By.ID,'draggable')
+target=driver.find_element(By.ID,'droppable')
+act_chain=ActionChains(driver)
+#the multiple action in drag and drop
+act_chain.click_and_hold(sources).move_to_element(target).release().perform()
