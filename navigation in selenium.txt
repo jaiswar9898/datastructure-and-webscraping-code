@@ -1,0 +1,11 @@
+#navigational command in selenium for selected function
+from selenium import webdriver
+import time
+driver=webdriver.Chrome("chromedriver.exe")
+driver.get("https://www.w3schools.com/html/html_forms.asp")
+var=driver.find_element_by_id("male")
+print(var.is_selected())
+var2=driver.find_element_by_name("gender")
+print(var2.is_selected())
+driver.quit()
+# if radio button is not selected it will give false and if it is selected it willl give true
