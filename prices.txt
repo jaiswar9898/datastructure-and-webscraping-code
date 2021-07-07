@@ -1,0 +1,30 @@
+# how to get all the prices  of amazon
+
+from selenium import webdriver
+from  bs4 import BeautifulSoup
+import time
+def get_html(url):
+    browser = webdriver.Chrome("chromedriver.exe")
+    browser.get(url)
+    return browser.page_source
+time.sleep(2)
+def main():
+    url=("https://www.amazon.com/s?k=laptop&ref=nb_sb_noss_2")
+    html=get_html(url)
+
+    soup=BeautifulSoup(html,'lxml')
+    cards = soup.find_all('div',{'class':'s-expand-height s-include-content-margin s-latency-cf-section s-border-bottom'})
+    for card in cards:
+        h2= card.h2
+        title = h2.text.strip()
+        url = card.h2.a.get('href')
+
+        # for getting the all the price
+
+        price = card.find('span',class_='a-price-whole').text.strip('.').strip()
+        # if don't want comma between that prices we use split
+        price = ''.join(price.split(','))
+        print(price)
+time.sleep(3)
+if _name_ == '_main_':
+    main()
