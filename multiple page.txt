@@ -1,0 +1,49 @@
+# how to scrap with multiple pages in selenium 
+from selenium import webdriver
+import time
+from selenium.webdriver.support.select import Select
+
+with open("job_scraping_web.csv",'w') as file:
+    file.write("job_title; locations_j; salary_d; contract_type; job_details\n ")
+
+driver=webdriver.Chrome('chromedriver.exe')
+driver.get('https://www.jobsite.co.uk/')
+driver.maximize_window()
+time.sleep(1)
+
+cookie=driver.find_element_by_xpath('//div[@id="ccmgt_explicit_accept"]')
+try:
+    cookie.click()
+except:
+    pass
+
+job_title=driver.find_element_by_id('keywords').send_keys('Software engineer')
+print(job_title)
+time.sleep(2)
+
+location_job=driver.find_element_by_id('location').send_keys('Manchester')
+print(location_job)
+
+dropdown=driver.find_element_by_id('Radius')
+radius=Select(dropdown)
+radius.select_by_visible_text('30 miles')
+time.sleep(2)
+
+search=driver.find_element_by_xpath('//input[@value="Search"]')
+search.click()
+time.sleep(2)
+
+for k in range(6):
+    titles=driver.find_elements_by_xpath('//div[@class="job-title"]/a/h2')
+    locations_j=driver.find_elements_by_xpath('//li[@class="location"]/span')
+    salary_d=driver.find_elements_by_xpath('//li[@class="salary"]')
+    contract_type=driver.find_elements_by_xpath('//li[@class="job-type"]/span')
+    job_details=driver.find_elements_by_xpath('//div[@title="job details"]/p')
+
+    with open("job_scraping_web.csv", 'a') as file:
+        for i in range(len(titles)):
+            file.write(titles[i].text + ";" + locations_j[i].text + ";" + salary_d[i].text + ";" + contract_type[i].text + ";" + job_details[i].text + "\n")
+        next=driver.find_element_by_xpath('//a[@aria-label="Next"]')
+        next.click()
+    file.close()
+driver.close()
