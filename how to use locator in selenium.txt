@@ -1,0 +1,7 @@
+#how to use locator in selenium
+#how to get url
+from selenium import webdriver
+
+driver=webdriver.Chrome("chromedriver.exe")
+driver.get("http://demo.automationtesting.in/Windows.html")
+driver.find_element_by_xpath("//*[@id='Tabbed']/a/button").click()
