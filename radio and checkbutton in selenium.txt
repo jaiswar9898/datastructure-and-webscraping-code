@@ -1,0 +1,13 @@
+#radia button and check button in selenium
+from selenium import webdriver
+import time
+
+driver=webdriver.Chrome("chromedriver.exe")
+driver.get("https://www.w3schools.com/html/html_forms.asp")
+# radio button mean ek time pey ek hi select kar saktey hey a
+# check button mean ek time pey multiple select kar sakte hey
+var=driver.find_element_by_id('male')
+var.click()
+time.sleep(5)
+
+driver.quit()
