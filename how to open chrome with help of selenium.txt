@@ -1,0 +1,8 @@
+# opening of chrome with help of selenium 
+from selenium.webdriver import Chrome
+driver=Chrome("chromedriver.exe")
+print(driver.get("http://google.com")) # how to go in google search with help of selenium
+t=driver.find_element_by_css_selector('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input')
+print(t.send_keys("python")) # direct search of python with help of selenium 
+s=driver.find_element_by_css_selector('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf.emcav > div.RNNXgb > div > div.a4bIc > input')
+s.click()
