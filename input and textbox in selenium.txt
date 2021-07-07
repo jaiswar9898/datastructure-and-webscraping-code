@@ -1,0 +1,16 @@
+#inputbox and textbox in selenium
+from selenium import webdriver
+import time
+
+driver=webdriver.Chrome("chromedriver.exe")
+driver.get("https://careeraddition.com/contact/")
+name=driver.find_element_by_name("name")
+name.send_keys("Danish")
+email=driver.find_element_by_name("email")
+email.send_keys("pranitajaiswar160@gmail.com")
+message=driver.find_element_by_name("message")
+message.send_keys("this is msg")
+button=driver.find_element_by_id("btn")
+button.click()
+
+time.sleep(10)
