@@ -1,0 +1,11 @@
+#navigational command in selenium fo is displayed and enabled
+from selenium import webdriver
+import time
+driver=webdriver.Chrome("chromedriver.exe")
+driver.get("https://masterprograming.com/contact-us/")
+time.sleep(30)
+var=driver.find_element_by_class_name("search-field")
+print(var.is_displayed())
+var2=driver.find_element_by_name('s')
+print(var.is_enabled())
+driver.quit()
