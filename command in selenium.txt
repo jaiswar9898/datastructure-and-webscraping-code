@@ -1,0 +1,12 @@
+#how to use time commands in selenium
+#how to do navigation commands in selenium
+from selenium import webdriver
+import time
+driver=webdriver.Chrome("chromedriver.exe")
+
+driver.maximize_window()
+driver.get("https://web.whatsapp.com/")
+driver.get("https://drive.google.com/drive/u/0/folders/11rXbALq1BGfTVRzuV8oQ-RCUyvaOpemq")
+driver.get("https://www.google.com/search?q=www.instagram.com&rlz=1C1SQJL_enIN933IN933&oq=www.in&aqs=chrome.4.69i58j69i57j0i271l3j5i44l3.6785j0j15&sourceid=chrome&ie=UTF-8")
+driver.get("https://www.facebook.com/")
+driver.close()
