@@ -1,0 +1,29 @@
+# how to log facebook with help of selenium 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import Select
+import time
+driver=webdriver.Chrome(ChromeDriverManager().install())
+driver.implicitly_wait(10)
+driver.get("https://www.google.com/search?q=www.facebook+login.com&rlz=1C1SQJL_enIN933IN933&oq=&aqs=chrome.0.35i39i362l8...8.174401122j0j15&sourceid=chrome&ie=UTF-8")
+
+#web_ele=driver.find_element_by_id('login-username')
+#web_ele.send_keys("@pranitabrij")
+#nextBtn=driver.find_element_by_id("login-signin")
+#nextBtn.click()
+# link=driver.find_element_by_xpath("//button[@class='u12b-opt-in_button  is-naked  u12b-opt-in_button--decline  mtc-font  twtr-font  js-decline']")
+# link.click()
+# go_t=driver.find_element_by_xpath("//button[@aria-label='Open menu who-we-are']")
+# go_t.click()
+# career=driver.find_element_by_xpath('//span[text()="Careers"]')
+# career.click()
+driver.find_element_by_xpath('//h3[text()="Facebook - Log In or Sign Up"]').click()
+web=driver.find_element(By.ID,"email")
+web.send_keys("@pranita.com")
+pass_w=driver.find_element(By.ID,"pass")
+pass_w.send_keys("@12334555")
+# button=driver.find_element(By.NAME,"login")
+# button.click()
+new=driver.find_element(By.XPATH,'//a[@class="_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy"]')
+new.click()
