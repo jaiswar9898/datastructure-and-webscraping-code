@@ -1,0 +1,12 @@
+# another method  to scroll in pages with help of selenium
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+driver=webdriver.Chrome('chromedriver.exe')
+driver.get('https://twitter.com/elonmusk?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor')
+time.sleep(3)
+web=driver.find_element(By.ID,'//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[1]/div[1]/div/div/div/div/div[2]/div/h2/div/div/div/span[1]/span/span')
+print(web)
+element=driver.find_element_by_tag_name('body')
+while True:
+    element.send_keys(Keys.PAGE_DOWN)
