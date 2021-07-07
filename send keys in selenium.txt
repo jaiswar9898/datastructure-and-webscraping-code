@@ -1,0 +1,22 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import Select
+
+driver=webdriver.Chrome(ChromeDriverManager().install())
+driver.implicitly_wait(10)
+driver.get("https://www.instagram.com/accounts/emailsignup/")
+web_email=driver.find_element_by_xpath('//input[@autocomplete="tel"]')
+web_email.send_keys("@pranitabrij")
+
+pass_name=driver.find_element_by_xpath('//input[@autocapitalize="sentences"]')
+pass_name.send_keys("1234@123")
+
+pass_user=driver.find_element_by_xpath('//input[@aria-label="Username"]')
+pass_user.send_keys("ammu")
+
+pass_word=driver.find_element_by_xpath('//input[@aria-label="Password"]')
+pass_word.send_keys("@ammusin")
+
+nextBtn=driver.find_element_by_xpath("//button[text()='Sign up']")
+nextBtn.click()
