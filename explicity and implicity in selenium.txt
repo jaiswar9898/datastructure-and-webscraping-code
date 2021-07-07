@@ -1,0 +1,14 @@
+#explicity and implicity of selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+import time
+driver=webdriver.Chrome("chromedriver.exe")
+driver.implicitly_wait((10))
+driver.get("https://masterprograming.com/")
+mydynamicElement=driver.find_element_by_id("site-navigation")
+print("bhai sab kuch sahi hey")
+driver.quit()
+# it is called implicity
