@@ -1,4 +1,4 @@
-######### This is a intro of  Linked list where we will discuss how Linked List Works and how to create #head and nodes and how to connect them with each other the whole implementation of Linked list is in #the next Post. You can get the implementation video on Youtube> ForCodeCoder channel name.
+
 
 
 
