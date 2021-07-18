@@ -1,0 +1,85 @@
+# how to create session in flask 
+# session is also like cookies which store in client computer 
+from flask import Flask, render_template, redirect, request, session
+# The Session instance is not used for direct access, you should always use flask.session
+from flask_session import Session
+
+app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
+
+@app.route("/")
+def index():
+	if not session.get("name"):
+		return redirect("/login")
+	return render_template('index.html')
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+	if request.method == "POST":
+		session["name"] = request.form.get("name")
+		return redirect("/")
+	return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+	session["name"] = None
+	return redirect("/")
+
+
+if __name__ == "__main__":
+	app.run(debug=True)
+
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+# index.html 
+
+{% extends "layout.html" %}
+
+{% block y %}
+
+{% if session.name %}
+	You are Register {{ session.name }} <a href="/logout">logout</a>.
+{% else %}
+	You are not Register. <a href="/login">login</a>.
+{% endif %}
+
+{% endblock %}
+
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+# login.html 
+
+{% extends "layout.html" %}
+
+{% block y %}
+
+<h1> REGISTER </h1>
+
+<form action="/login" method="POST">
+	<input placeholder="Name" autocomplete="off" type="text" name="name">
+	<input type="submit" name="Register">
+</form>
+
+{% endblock %}
+
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+#layout.html 
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="initial-scale=1, width=device-width">
+		<title> flask </title>
+	</head>
+	<body>
+		{% block y %}{% endblock %}
+	</body>
+</html>
+
