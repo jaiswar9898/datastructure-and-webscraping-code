@@ -6,16 +6,20 @@ class node:
 class BinarySearchTree:
     def __init__(self):
         self.root = None
+        
+        # inorder = left root right 
     def inorder(self):
         if(self.root == None):
             print("Tree Is Empty....")
         else:
             self._inorder(self.root)
-    def _inorder(self,current):
+    def _inorder(self,current):   
         if current:
             self._inorder(current.left_node)
             print(current.data,end=" ")
             self._inorder(current.right_node)
+            
+         # preorder = root left right 
     def preorder(self):
         if(self.root == None):
             print("Tree Is Empty....")
@@ -26,6 +30,9 @@ class BinarySearchTree:
             print(current.data,end=" ")
             self._preorder(current.left_node)
             self._preorder(current.right_node)
+            
+            postorder = left right root 
+            
     def postorder(self):
         if(self.root == None):
             print("Tree Is Empty....")
